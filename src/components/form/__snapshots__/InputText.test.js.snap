@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Text component test render correctly input text component 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    className="form-label"
+  >
+    
+  </label>
+  <input
+    className="form-control"
+    disabled={false}
+    maxLength={100}
+    minLength={6}
+    name="name"
+    onChange={[Function]}
+    placeholder=""
+    required={true}
+    type="text"
+    value=""
+  />
+</div>
+`;

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component test render correctly Home component 1`] = `
+<div
+  className="home rounded container"
+>
+  <h3
+    className="text-center"
+  >
+    User Stories
+  </h3>
+  <div
+    className="row"
+  >
+    <div
+      className="col-12"
+    >
+      <div
+        className="list-group"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="list-group-item list-group-item-success"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Allow User to Sign Up —&gt; Any one can sign up
+        </div>
+        <div
+          className="list-group-item list-group-item-danger"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Allow Signed Up Users to be able to login. 
+        </div>
+        <div
+          className="list-group-item list-group-item-warning"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Allow Logged in users to log out.
+        </div>
+        <div
+          className="list-group-item list-group-item-info"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          List Users —&gt; Any user (both Admin and normal user) can see list of users (provided they are logged in).
+        </div>
+        <div
+          className="list-group-item list-group-item-dark"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Update a user —&gt; Only an Admin User can Update any user's details (provided the Admin is logged in).
+        </div>
+        <div
+          className="list-group-item list-group-item-success"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Delete a user —&gt; Only an Admin User can Delete any user (provided the Admin is logged in).
+        </div>
+        <div
+          className="list-group-item list-group-item-danger"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Fields you should have against the User table are : id, email, username, firstName, lastName  password, created_at, updated_at, is_admin —&gt; Required Fields
+        </div>
+        <div
+          className="list-group-item list-group-item-warning"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          The fields created_at, updated_at should record Date and time as to when the record was created and updated.
+        </div>
+        <div
+          className="list-group-item list-group-item-info"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Rebuild the Laravel auth default, make a user can login using username and password.
+        </div>
+        <div
+          className="list-group-item list-group-item-dark"
+          data-rb-event-key={null}
+          disabled={false}
+          onClick={[Function]}
+        >
+          Deploy codes on AWS for preview and upload codes to GitHub for review.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
