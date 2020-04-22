@@ -16,9 +16,9 @@ const Routes = () => {
 
   const AuthRoute = ({ component, ...options }) => {
     if (component === Login && authApi.state.isLoggedIn) {
-      return <Redirect to='/' />;
+      return <Redirect to='/umf' />;
     } else if (component === Register && authApi.state.isLoggedIn) {
-      return <Redirect to='/' />;
+      return <Redirect to='/umf' />;
     } else if (component === Register && !authApi.state.isLoggedIn) {
       return <Route {...options} component={Register} />;
     } else {
@@ -31,7 +31,7 @@ const Routes = () => {
   return (
     <Suspense fallback={<RenderLoading />}>
       <Switch>
-        <Route exact path='/' component={HomePage} />
+        <Route exact path='/umf' component={HomePage} />
         <AuthRoute path='/login' component={Login} />
         <AuthRoute path='/register' component={Register} />
         <AuthRoute path='/users' component={UserPage} />
