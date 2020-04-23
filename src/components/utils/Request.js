@@ -1,3 +1,5 @@
+import { getLocal } from "./Storage.js";
+
 export const get = async (url) => {
   try {
     const response = await fetch(url);
@@ -14,6 +16,7 @@ export const post = async (method = "post", url, data = null) => {
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
+        Authorization: `Bearer ${getLocal("token")}`,
       },
       body: JSON.stringify(data),
     });

@@ -67,7 +67,7 @@ const deleteUser = (state, action) => {
     user: action.user,
     listUsers: state.listUsers.filter((user) => {
       return user.id !== action.userId;
-    }),
+    }), //When fake data works, but async data is not???
   };
 };
 

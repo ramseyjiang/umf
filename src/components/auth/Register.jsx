@@ -37,10 +37,10 @@ export default function Register(props) {
       <Container className={props.isModal ? "justify-content-center bg-light rounded": "justify-content-center col-6 register bg-light rounded"}>
         { authApi.state.error && <Alert variant='danger'>{authApi.state.error}</Alert>}
         <Form onSubmit={handleSubmit} method="post" className="auth-padding">
-          <InputText placeholder="Please input username" type="text" label="Username" name="username" min="2" max="16" value={user.username} onChange={handleChange}/>
+          <InputText placeholder="Please input username" type="text" label="Username" name="username" min="2" max="16" value={user.username} onChange={handleChange} disabled={userApi.state.operate === 'Update'}/>
           {(userApi.state.operate !== 'INIT') && <Form.Check type="checkbox" label="Is an admin?" name="is_admin" checked={user.is_admin} onChange={handleChange} />}
           <InputText placeholder="Please input first name" type="text" label="First Name" name="first_name" min="2" max="16" value={user.first_name} onChange={handleChange}/>
-          <InputText placeholder="Please input last name" type="text" label="Last Name" name="last_name" min="2" max="16" value={user.last_name} onChange={handleChange}/>
+          <InputText placeholder="Please input last name" type="text" label="Last Name" name="last_name" min="2" max="16" value={user.last_name} onChange={handleChange} disabled={userApi.state.operate === 'Update'}/>
           <InputText placeholder="Please input email" type="email" label="Email" name="email" value={user.email} onChange={handleChange}/>
           <InputText placeholder="Please input password" type="password" label="Password" name="password" min="6" max="16" value={user.password} onChange={handleChange}/>
           <Button variant="primary" type="submit" className="btn btn-sm">Submit</Button>

@@ -38,13 +38,19 @@ const UserContextProvider = ({ children }) => {
   }, []);
 
   const createUser = useCallback((user) => {
-    //todo async to backend
+    post("post", PROXY_URL + USER_API_URL + "create", user).then((result) => {
+      return dispatch({ type: UPDATE, user: user });
+    });
     return dispatch({ type: CREATE, user: user });
   }, []);
 
   const updateUser = useCallback((user) => {
-    //todo async to backend
-    return dispatch({ type: UPDATE, user: user });
+    console.log(user, 222);
+    post("put", PROXY_URL + USER_API_URL + "update/" + user.id, user).then(
+      (result) => {
+        return dispatch({ type: UPDATE, user: user });
+      }
+    );
   }, []);
 
   const deleteUser = useCallback((userId) => {

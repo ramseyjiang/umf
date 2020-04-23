@@ -45,7 +45,8 @@ const initAccess = () => {
 };
 
 const success = (action) => {
-  setLocal("token", action.access_token);
+  setLocal("token", action.data.access_token);
+  setLocal("isAdmin", action.data.isAdmin);
 
   return {
     ...initAuth,
@@ -66,4 +67,5 @@ const logout = () => {
 
 const removeUser = () => {
   removeLocal("token");
+  setLocal("isAdmin");
 };
