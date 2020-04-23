@@ -1,65 +1,80 @@
 import React, {
-    createContext,
-    useReducer,
-    useContext,
-    useCallback,
-    useMemo
-  } from "react";
-  import {
-    initState,
-    userReducer,
-    INIT,
-    CREATE,
-    UPDATE,
-    DELETE
-  } from "../services/UserReducer";
-  
-  const UserContext = createContext();
-  
-  const UserContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(userReducer, initState);
+  createContext,
+  useReducer,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
+import {
+  initState,
+  userReducer,
+  INIT,
+  CREATE,
+  UPDATE,
+  DELETE,
+  LIST,
+} from "../services/UserReducer";
+import { get, post } from "../components/utils/Request";
 
-    const initUser = useCallback(
-      user => {
-        return dispatch({ type: INIT, user: initState.user, operate: CREATE });
-      },
-      []
-    );
+const USER_API_URL = "http://13.210.14.131/um/public/index.php/api/";
+const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+const UserContext = createContext();
 
-    const editUser = useCallback(
-      user => {
-        return dispatch({ type: INIT, user: user, operate: UPDATE });
-      },[]
-    );
-  
-    const createUser = useCallback( user => {
-      //todo async to backend
-      return dispatch({ type: CREATE, user: user })
-    }, []);
+const UserContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(userReducer, initState);
 
-    const updateUser = useCallback(user =>{ 
-      //todo async to backend
-      return dispatch({ type: UPDATE, user: user })
-    }, []);
-  
-    const deleteUser = useCallback( userId => { 
-      //todo async to backend
-      return dispatch({ type: DELETE, userId: userId })
-    }, []);
-  
-    const userApi = useMemo(
-      () => ({ state, initUser, editUser, createUser, deleteUser, updateUser }),
-      [state, initUser, editUser, createUser, deleteUser, updateUser]
+  const initUser = useCallback((user) => {
+    return dispatch({ type: INIT, user: initState.user, operate: CREATE });
+  }, []);
+
+  const getUserList = useCallback(() => {
+    get(PROXY_URL + USER_API_URL + "list").then((result) => {
+      dispatch({ type: LIST, data: result });
+    });
+  }, []);
+
+  const editUser = useCallback((user) => {
+    return dispatch({ type: INIT, user: user, operate: UPDATE });
+  }, []);
+
+  const createUser = useCallback((user) => {
+    //todo async to backend
+    return dispatch({ type: CREATE, user: user });
+  }, []);
+
+  const updateUser = useCallback((user) => {
+    //todo async to backend
+    return dispatch({ type: UPDATE, user: user });
+  }, []);
+
+  const deleteUser = useCallback((userId) => {
+    post("delete", PROXY_URL + USER_API_URL + "delete/" + userId).then(
+      (result) => {
+        return dispatch({ type: DELETE, data: result });
+      }
     );
-  
-    return (
-      <UserContext.Provider value={{ userApi }}>{children}</UserContext.Provider>
-    );
-  };
-  
-  export const useUserContext = () => {
-    return useContext(UserContext);
-  };
-  
-  export default UserContextProvider;
-  
+  }, []);
+
+  const userApi = useMemo(
+    () => ({
+      state,
+      initUser,
+      editUser,
+      createUser,
+      deleteUser,
+      updateUser,
+      getUserList,
+    }),
+    [state, initUser, editUser, createUser, deleteUser, updateUser, getUserList]
+  );
+
+  return (
+    <UserContext.Provider value={{ userApi }}>{children}</UserContext.Provider>
+  );
+};
+
+export const useUserContext = () => {
+  return useContext(UserContext);
+};
+
+export default UserContextProvider;

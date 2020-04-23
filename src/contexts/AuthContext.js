@@ -17,6 +17,10 @@ import {
   LOGOUT,
 } from "../services/AuthReducer";
 
+import { get, post } from "../components/utils/Request";
+const USER_API_URL = "http://13.210.14.131/um/public/index.php/api/";
+const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
@@ -32,47 +36,30 @@ const AuthContextProvider = ({ children }) => {
 
   const loading = () => dispatch({ type: LOADING });
 
-  const register = useCallback(async (register) => {
-    //   firebase
-    //     .auth()
-    //     .createUserWithEmailAndPassword(register.email, register.password)
-    //     .then((res) => {
-    //       if (res.user) {
-    return dispatch({
-      type: SUCCESS,
-      username: register.username,
+  const register = useCallback(async (data) => {
+    post("post", PROXY_URL + USER_API_URL + "register", data).then((result) => {
+      // if (result.Response === "True") {
+      dispatch({ type: SUCCESS, data: result });
+      // } else {
+      //   dispatch({ type: FAIL, error: result.error });
+      // }
     });
-    //       }
-    //     })
-    //     .catch((e) => {
-    //       return dispatch({ type: FAIL, error: e.message });
-    //     });
   }, []);
 
-  const login = useCallback(async (login) => {
-    //   firebase
-    //     .auth()
-    //     .signInWithEmailAndPassword(login.email, login.password)
-    //     .then((res) => {
-    //       if (res.user) {
-    return dispatch({ type: SUCCESS, username: login.email });
-    //       }
-    //     })
-    //     .catch((e) => {
-    //       return dispatch({ type: FAIL, error: e.message });
-    //     });
+  const login = useCallback(async (data) => {
+    post("post", PROXY_URL + USER_API_URL + "login", data).then((result) => {
+      // if (result.Response === "True") {
+      dispatch({ type: SUCCESS, data: result });
+      // } else {
+      //   dispatch({ type: FAIL, error: result.error });
+      // }
+    });
   }, []);
 
   const logout = useCallback(() => {
-    //   firebase
-    //     .auth()
-    //     .signOut()
-    //     .then(() => {
-    return dispatch({ type: LOGOUT });
-    //     })
-    //     .catch((e) => {
-    //       return dispatch({ type: FAIL, error: e.message });
-    //     });
+    get(PROXY_URL + USER_API_URL + "logout").then((result) => {
+      dispatch({ type: LOGOUT, data: result });
+    });
   }, []);
 
   const authApi = useMemo(

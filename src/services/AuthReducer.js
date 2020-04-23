@@ -7,9 +7,9 @@ import {
 export const initAuth = {
   isLoggedIn: false,
   loading: false,
-  username: null,
   isAdmin: false, //it is used to extension the roles management.
   error: null,
+  token: null,
 };
 
 // Actions
@@ -26,9 +26,9 @@ export function authReducer(state, action) {
     case LOADING:
       return { ...state, loading: true };
     case SUCCESS:
-      return loginSuccess(action);
+      return success(action);
     case FAIL:
-      return loginFailure(action);
+      return failure(action);
     case LOGOUT:
       return logout();
     default:
@@ -46,19 +46,17 @@ const initAccess = () => {
   };
 };
 
-const loginSuccess = (action) => {
-  setLocal("username", action.username);
-  setLocal("isAdmin", action.isAdmin);
+const success = (action) => {
+  // setLocal("username", action.username);
 
   return {
     ...initAuth,
     isLoggedIn: true,
-    username: action.username,
-    isAdmin: action.isAdmin,
+    token: action.data.access_token,
   };
 };
 
-const loginFailure = (action) => {
+const failure = (action) => {
   removeUser();
   return { ...initAuth, error: action.error };
 };
@@ -70,5 +68,4 @@ const logout = () => {
 
 const removeUser = () => {
   removeLocal("username");
-  removeLocal("isAdmin");
 };
