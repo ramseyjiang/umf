@@ -38,21 +38,21 @@ const AuthContextProvider = ({ children }) => {
 
   const register = useCallback(async (data) => {
     post("post", PROXY_URL + USER_API_URL + "register", data).then((result) => {
-      // if (result.Response === "True") {
-      dispatch({ type: SUCCESS, data: result });
-      // } else {
-      //   dispatch({ type: FAIL, error: result.error });
-      // }
+      if (result.status === "ok") {
+        dispatch({ type: SUCCESS, data: result });
+      } else {
+        dispatch({ type: FAIL, error: result.error });
+      }
     });
   }, []);
 
   const login = useCallback(async (data) => {
     post("post", PROXY_URL + USER_API_URL + "login", data).then((result) => {
-      // if (result.Response === "True") {
-      dispatch({ type: SUCCESS, data: result });
-      // } else {
-      //   dispatch({ type: FAIL, error: result.error });
-      // }
+      if (result.status === "ok") { 
+        dispatch({ type: SUCCESS, data: result });
+      } else {
+        dispatch({ type: FAIL, error: result.error });
+      }
     });
   }, []);
 
