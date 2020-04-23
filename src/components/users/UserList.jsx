@@ -8,7 +8,7 @@ const UserList = () => {
   const { userApi } = useUserContext();
   const [openUserModal, setOpenUserModal] = useState(false);
   const isAdmin = getLocal('isAdmin');
-console.log(isAdmin, 33);
+
   const openModal = () => {
     setOpenUserModal(true);
   }

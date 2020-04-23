@@ -45,7 +45,6 @@ const UserContextProvider = ({ children }) => {
   }, []);
 
   const updateUser = useCallback((user) => {
-    console.log(user, 222);
     post("put", PROXY_URL + USER_API_URL + "update/" + user.id, user).then(
       (result) => {
         return dispatch({ type: UPDATE, user: user });
