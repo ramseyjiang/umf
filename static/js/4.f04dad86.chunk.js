@@ -1,2 +1,0 @@
-(this.webpackJsonpumf=this.webpackJsonpumf||[]).push([[4],{93:function(n,t,o){"use strict";o.r(t);var u=o(0),e=o.n(u);t.default=function(){return console.log("Not found"),e.a.createElement("h1",null,"Not found")}}}]);
-//# sourceMappingURL=4.f04dad86.chunk.js.map

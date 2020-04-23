@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/NotFound.jsx"],"names":["NotFound","console","log"],"mappings":"2FAAA,2BAOeA,UALE,WAEf,OADAC,QAAQC,IAAI,aACL","file":"static/js/4.b1b32b86.chunk.js","sourcesContent":["import React from \"react\";\n\nconst NotFound = () => {\n  console.log('Not found');\n  return <h1>Not found</h1>;\n};\n\nexport default NotFound;"],"sourceRoot":""}
