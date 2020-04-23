@@ -38,7 +38,7 @@ export default function Register(props) {
         { authApi.state.error && <Alert variant='danger'>{authApi.state.error}</Alert>}
         <Form onSubmit={handleSubmit} method="post" className="auth-padding">
           <InputText placeholder="Please input username" type="text" label="Username" name="username" min="2" max="16" value={user.username} onChange={handleChange}/>
-          <Form.Check type="checkbox" label="Is an admin?" name="is_admin" checked={user.is_admin} onChange={handleChange} />
+          {(userApi.state.operate !== 'INIT') && <Form.Check type="checkbox" label="Is an admin?" name="is_admin" checked={user.is_admin} onChange={handleChange} />}
           <InputText placeholder="Please input first name" type="text" label="First Name" name="first_name" min="2" max="16" value={user.first_name} onChange={handleChange}/>
           <InputText placeholder="Please input last name" type="text" label="Last Name" name="last_name" min="2" max="16" value={user.last_name} onChange={handleChange}/>
           <InputText placeholder="Please input email" type="email" label="Email" name="email" value={user.email} onChange={handleChange}/>

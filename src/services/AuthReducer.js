@@ -7,7 +7,6 @@ import {
 export const initAuth = {
   isLoggedIn: false,
   loading: false,
-  isAdmin: false, //it is used to extension the roles management.
   error: null,
   token: null,
 };
@@ -37,17 +36,16 @@ export function authReducer(state, action) {
 }
 
 const initAccess = () => {
-  let username = getLocal("username");
+  let token = getLocal("token");
   return {
     ...initAuth,
-    isLoggedIn: username !== null,
-    username: username,
-    isAdmin: username !== null && getLocal("isAdmin"),
+    isLoggedIn: token !== null,
+    token: token,
   };
 };
 
 const success = (action) => {
-  // setLocal("username", action.username);
+  setLocal("token", action.access_token);
 
   return {
     ...initAuth,
@@ -67,5 +65,5 @@ const logout = () => {
 };
 
 const removeUser = () => {
-  removeLocal("username");
+  removeLocal("token");
 };
