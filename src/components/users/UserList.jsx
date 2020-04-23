@@ -25,7 +25,7 @@ console.log(isAdmin, 33);
     <Container className="users rounded user-list">
       <UserModal show={openUserModal} onHide={closeModal} user={userApi.state.user} />
         <div>
-          { !isAdmin && <Button variant="primary" className="btn btn-sm" onClick={()=> {userApi.initUser(); openModal();}}><small>Create new user</small></Button>}
+          { parseInt(isAdmin) === 1 ? <Button variant="primary" className="btn btn-sm hide" onClick={()=> {userApi.initUser(); openModal();}}><small>Create new user</small></Button> : null}
           <h6 className="text-right"><small>Total users is {userApi.state.counter}</small></h6>
         </div>
         <Table>
@@ -38,7 +38,7 @@ console.log(isAdmin, 33);
               <th>Email</th>
               <th>CreatedAt</th>
               <th>UpdatedAt</th>
-              { !isAdmin && <th>Operation</th>}
+              { parseInt(isAdmin) === 1 ? <th>Operation</th> : null}
             </tr>
           </thead>
           <tbody>
@@ -52,8 +52,8 @@ console.log(isAdmin, 33);
                 <td>{user.created_at}</td>
                 <td>{user.updated_at}</td>
                 <td>
-                  { !isAdmin && <Button variant="primary" className="btn btn-sm" onClick={() => {userApi.editUser(user); openModal();}}>Update</Button> }
-                  { !isAdmin && <Button variant="danger" className="btn btn-sm" onClick={() => {userApi.deleteUser(user.id); document.getElementById(user.id).style.display="none";}}>Delete</Button>}
+                  { parseInt(isAdmin) === 1 ? <Button variant="primary" className="btn btn-sm" onClick={() => {userApi.editUser(user); openModal();}}>Update</Button>  : null}
+                  { parseInt(isAdmin) === 1 ? <Button variant="danger" className="btn btn-sm" onClick={() => {userApi.deleteUser(user.id); document.getElementById(user.id).style.display="none";}}>Delete</Button> : null}
                 </td>
               </tr>
             ))}
