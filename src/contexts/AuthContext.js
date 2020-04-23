@@ -41,17 +41,17 @@ const AuthContextProvider = ({ children }) => {
       if (result.status === "ok") {
         dispatch({ type: SUCCESS, data: result });
       } else {
-        dispatch({ type: FAIL, error: result.error });
+        dispatch({ type: FAIL, error: result.errors });
       }
     });
   }, []);
 
   const login = useCallback(async (data) => {
     post("post", PROXY_URL + USER_API_URL + "login", data).then((result) => {
-      if (result.status === "ok") { 
+      if (result.status === "ok") {
         dispatch({ type: SUCCESS, data: result });
       } else {
-        dispatch({ type: FAIL, error: result.error });
+        dispatch({ type: FAIL, error: result.errors });
       }
     });
   }, []);

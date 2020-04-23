@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.loading {
+  margin-top: 85px;
+}
+
 .home {
   padding-top: 10px;
   padding-bottom: 20px;

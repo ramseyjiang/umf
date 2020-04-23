@@ -39,9 +39,8 @@ const UserContextProvider = ({ children }) => {
 
   const createUser = useCallback((user) => {
     post("post", PROXY_URL + USER_API_URL + "create", user).then((result) => {
-      return dispatch({ type: UPDATE, user: user });
+      return dispatch({ type: CREATE, user: user });
     });
-    return dispatch({ type: CREATE, user: user });
   }, []);
 
   const updateUser = useCallback((user) => {
