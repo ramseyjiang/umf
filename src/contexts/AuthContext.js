@@ -17,7 +17,7 @@ import {
   LOGOUT,
 } from "../services/AuthReducer";
 
-import { request } from "../components/utils/Request";
+import { get, post } from "../components/utils/Request";
 const USER_API_URL = "http://13.210.14.131/um/public/index.php/api/";
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
 
@@ -37,7 +37,7 @@ const AuthContextProvider = ({ children }) => {
   const loading = () => dispatch({ type: LOADING });
 
   const register = useCallback(async (data) => {
-    request("post", PROXY_URL + USER_API_URL + "register", data).then((result) => {
+    post("post", PROXY_URL + USER_API_URL + "register", data).then((result) => {
       if (result.status === "ok") {
         dispatch({ type: SUCCESS, data: result });
       } else {
@@ -47,7 +47,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const login = useCallback(async (data) => {
-    request("post", PROXY_URL + USER_API_URL + "login", data).then((result) => {
+    post("post", PROXY_URL + USER_API_URL + "login", data).then((result) => {
       if (result.status === "ok") {
         dispatch({ type: SUCCESS, data: result });
       } else {
@@ -57,7 +57,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const logout = useCallback(() => {
-    request("get", PROXY_URL + USER_API_URL + "logout").then((result) => {
+    get(PROXY_URL + USER_API_URL + "logout").then((result) => {
       dispatch({ type: LOGOUT, data: result });
     });
   }, []);
