@@ -34,7 +34,7 @@ const Routes = () => {
         <Route exact path='/umf' component={HomePage} />
         <AuthRoute path='/login' component={Login} />
         <AuthRoute path='/register' component={Register} />
-        <AuthRoute path='/users' component={UserPage} />
+        <Route path='/users' component={UserPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
