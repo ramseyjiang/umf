@@ -14,7 +14,7 @@ import {
   DELETE,
   LIST,
 } from "../services/UserReducer";
-import { get, post } from "../components/utils/Request";
+import { request } from "../components/utils/Request";
 
 const USER_API_URL = "http://13.210.14.131/um/public/index.php/api/";
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
@@ -28,7 +28,7 @@ const UserContextProvider = ({ children }) => {
   }, []);
 
   const getUserList = useCallback(() => {
-    get(PROXY_URL + USER_API_URL + "list").then((result) => {
+    request("get", PROXY_URL + USER_API_URL + "list").then((result) => {
       dispatch({ type: LIST, data: result });
     });
   }, []);
@@ -38,13 +38,17 @@ const UserContextProvider = ({ children }) => {
   }, []);
 
   const createUser = useCallback((user) => {
-    post("post", PROXY_URL + USER_API_URL + "create", user).then((result) => {
-      return dispatch({ type: CREATE, user: user });
-    });
+    request("post", PROXY_URL + USER_API_URL + "create", user).then(
+      (result) => {
+        request("get", PROXY_URL + USER_API_URL + "list").then((result) => {
+          dispatch({ type: LIST, data: result });
+        });
+      }
+    );
   }, []);
 
   const updateUser = useCallback((user) => {
-    post("put", PROXY_URL + USER_API_URL + "update/" + user.id, user).then(
+    request("put", PROXY_URL + USER_API_URL + "update/" + user.id, user).then(
       (result) => {
         return dispatch({ type: UPDATE, user: user });
       }
@@ -52,7 +56,7 @@ const UserContextProvider = ({ children }) => {
   }, []);
 
   const deleteUser = useCallback((userId) => {
-    post("delete", PROXY_URL + USER_API_URL + "delete/" + userId).then(
+    request("delete", PROXY_URL + USER_API_URL + "delete/" + userId).then(
       (result) => {
         return dispatch({ type: DELETE, data: result });
       }
