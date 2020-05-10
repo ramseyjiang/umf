@@ -1,9 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Footer from "./Footer";
-import { render } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 
 describe("Footer component test", () => {
+  afterEach(cleanup);
+
   it("render correctly footer component", () => {
     const FooterComponent = renderer.create(<Footer />).toJSON();
     expect(FooterComponent).toMatchSnapshot();

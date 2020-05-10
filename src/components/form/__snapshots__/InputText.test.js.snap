@@ -6,6 +6,7 @@ exports[`Input Text component test render correctly input text component 1`] = `
 >
   <label
     className="form-label"
+    htmlFor="name"
   >
     
   </label>
@@ -21,5 +22,6 @@ exports[`Input Text component test render correctly input text component 1`] = `
     type="text"
     value=""
   />
+  0
 </div>
 `;

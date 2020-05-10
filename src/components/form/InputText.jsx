@@ -10,7 +10,7 @@ const InputText = ({
   onBlur,
   min,
   max,
-  error,
+  error='',
   label,
   multiple,
   disabled,
@@ -24,9 +24,12 @@ const InputText = ({
 
   return (
     <Form.Group>
-      <Form.Label>{label}</Form.Label>
-      <Form.Control type={hidden ? "text" : type} placeholder={placeholder} minLength={min} maxLength={max} name={name} value={value} onChange={onChange} disabled={disabled} required/>
+      <Form.Label htmlFor={name}>{label}</Form.Label>
+      <Form.Control className={error.length ? "is-invalid" : ""} type={hidden ? "text" : type} placeholder={placeholder} minLength={min} maxLength={max} name={name} value={value} onChange={onChange} disabled={disabled} required/>
       {name==="password" && <Form.Check type="checkbox" label={hidden ? "Hide password" : "Show password"} onClick={handleClick} />}
+      {error.length && <div className="invalid-feedback">
+        {error}
+      </div>}
     </Form.Group>
   );
 };
