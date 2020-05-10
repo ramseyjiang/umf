@@ -19,7 +19,7 @@ const Navigation = () => {
           <NavLink
             exact
             className='nav-link'
-            to='/umf'
+            to='/'
             onClick={() => setExpanded(false)}>
             Home
           </NavLink>
@@ -35,7 +35,7 @@ const Navigation = () => {
           <NavLink exact to="/register" className='nav-link'>Register</NavLink>
         </Nav> }
         { authApi.state.isLoggedIn && <Nav>
-          <NavLink to="/umf" onClick={() => authApi.logout()} className='nav-link'>Logout</NavLink>
+          <NavLink to="/" onClick={() => authApi.logout()} className='nav-link'>Logout</NavLink>
         </Nav> }
       </Navbar.Collapse>
     </Navbar>
