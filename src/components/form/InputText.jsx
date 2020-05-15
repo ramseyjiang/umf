@@ -27,7 +27,7 @@ const InputText = ({
       <Form.Label htmlFor={name}>{label}</Form.Label>
       <Form.Control className={error.length ? "is-invalid" : ""} type={hidden ? "text" : type} placeholder={placeholder} minLength={min} maxLength={max} name={name} value={value} onChange={onChange} disabled={disabled} required/>
       {name==="password" && <Form.Check type="checkbox" label={hidden ? "Hide password" : "Show password"} onClick={handleClick} />}
-      {error.length && <div className="invalid-feedback">
+      {error.length !== 0 && <div className="invalid-feedback">
         {error}
       </div>}
     </Form.Group>
