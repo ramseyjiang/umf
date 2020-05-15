@@ -8,10 +8,6 @@ exports[`Footer component test render correctly footer component 1`] = `
     className="text-center text-white py-1"
   >
     © 
-    10
-    /
-    05
-    /
     2020
      Copyright:
     <label
