@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../../contexts/UserContext';
 import UserModal from "./UserModal";
-import { getLocal } from "../utils/Storage.js";
+import { getLocal } from "../../utils/Storage.js";
 import { Container, Table, Button } from 'react-bootstrap';
 
 const UserList = () => {

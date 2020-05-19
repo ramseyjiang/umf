@@ -1,5 +1,5 @@
 import React from "react";
-import {year} from "../utils/Date.js"
+import {year} from "../../utils/Date.js"
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
