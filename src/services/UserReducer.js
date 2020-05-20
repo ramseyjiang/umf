@@ -1,3 +1,5 @@
+import uniqid from "uniqid";
+
 // Actions
 export const INIT = "INIT";
 export const CREATE = "CREATE";
@@ -56,7 +58,7 @@ const initUser = (state, action) => {
 const createUser = (state, action) => {
   return {
     counter: ++state.counter,
-    user: { ...action.user, id: 100000 },//this 100000 is a temp id for a new user.
+    user: { ...action.user, id: uniqid() },
     listUsers: [...state.listUsers, action.user],
   };
 };

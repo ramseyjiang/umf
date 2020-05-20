@@ -2,7 +2,7 @@ import {
   getLocal,
   removeLocal,
   setLocal,
-} from "../components/utils/Storage.js";
+} from "../utils/Storage.js";
 
 export const initAuth = {
   isLoggedIn: false,
