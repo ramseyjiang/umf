@@ -42,7 +42,7 @@ const UserList = () => {
             </tr>
           </thead>
           <tbody>
-            {userApi.state.listUsers.map((user, index) => (
+            {userApi.state.listUsers.length && userApi.state.listUsers.map((user, index) => (
               <tr key={index} id={user.id}>
                 <td>{user.username}</td>
                 <td>{user.first_name}</td>
