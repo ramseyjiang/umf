@@ -1,8 +1,6 @@
-import {
-  getLocal,
-  removeLocal,
-  setLocal,
-} from "../utils/Storage.js";
+import { getLocal, removeLocal, setLocal } from "../utils/Storage.js";
+
+import { SUCCESS, FAIL, LOGOUT, LOADING, INIT } from "../utils/actions.js";
 
 export const initAuth = {
   isLoggedIn: false,
@@ -10,13 +8,6 @@ export const initAuth = {
   error: null,
   token: null,
 };
-
-// Actions
-export const SUCCESS = "SUCCESS";
-export const FAIL = "FAIL";
-export const LOGOUT = "LOGOUT";
-export const LOADING = "LOADING";
-export const INIT = "INIT";
 
 export function authReducer(state, action) {
   switch (action.type) {

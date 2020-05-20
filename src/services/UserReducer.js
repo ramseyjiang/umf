@@ -1,11 +1,5 @@
 import uniqid from "uniqid";
-
-// Actions
-export const INIT = "INIT";
-export const CREATE = "CREATE";
-export const DELETE = "DELETE";
-export const UPDATE = "UPDATE";
-export const LIST = "LIST";
+import { INIT, CREATE, UPDATE, DELETE, LIST } from "../utils/actions.js";
 
 export const initState = {
   counter: 0,
